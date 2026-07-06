@@ -1,0 +1,84 @@
+<!-- doctype: Declares the document type as HTML5 to ensure correct rendering in modern web browsers -->
+<!DOCTYPE html>
+<!-- html: The root container holding all of the document's elements and metadata -->
+<html lang="en">
+
+<!-- head: Holds machine-readable information (metadata) about the document, such as character sets and viewport definitions -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPSC-349 Lab 5: Movies Portal</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<!-- body: Encloses all the visible, renderable content of the web page shown to the user -->
+
+<body>
+
+    <!-- header: Groups introductory content, branding, and major titles at the top of a page or section -->
+    <header>
+        <div class="container">
+            <h1>Movies Portal</h1>
+            <p>Welcome to the Movies Portal. Explore movies, genres, ratings, and reviews.</p>
+        </div>
+    </header>
+
+    <!-- nav: Defines a set of navigation links designed for site-wide or page-specific menus -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Featured Movies</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="collection.html">My Collection</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- main: Encloses the unique, central content of the document that is not repeated across other pages -->
+    <main class="container">
+
+        <!-- section: Groups related content together into distinct thematic regions of a page -->
+        <section id="featured" class="section">
+            <h2>Featured Movies</h2>
+
+            <div class="movie-grid">
+
+                <!-- article: Defines a self-contained, independent composition like a card, post, or article -->
+                <article class="movie-card">
+                    <h3>The Boys</h3>
+                    <img src="images/the_boys.jpg" alt="The Boys poster" width="200">
+                    <p>A fun and irreverent take on what happens when superheroes abuse their superpowers.</p>
+                    <p><strong>Rating:</strong> 8.7/10</p>
+                    <a class="btn" href="details.html?movie=the-boys">View Details</a>
+                </article>
+
+                <article class="movie-card">
+                    <h3>Superman</h3>
+                    <img src="images/superman.jpeg" alt="Superman movie poster" width="200">
+                    <p>An upcoming superhero movie following Superman's journey to reconcile his Kryptonian heritage.
+                    </p>
+                    <p><strong>Rating:</strong> 8.5/10</p>
+                    <a class="btn" href="details.html?movie=superman">View Details</a>
+                </article>
+
+                <article class="movie-card">
+                    <h3>Avatar: Fire and Ash</h3>
+                    <img src="images/avatar_fire_and_ash.jpeg" alt="Avatar: Fire and Ash movie poster" width="200">
+                    <p>The next chapter in the Avatar franchise exploring the new ash people of Pandora.</p>
+                    <p><strong>Rating:</strong> 8.9/10</p>
+                    <a class="btn" href="details.html?movie=avatar-fire-and-ash">View Details</a>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- footer: Contains concluding page details such as copyright notices and contact information -->
+    <footer>
+        <p>&copy; 2026 Movies Portal</p>
+        <p>Contact us at <a href="mailto:movies@example.com">movies@cspc349.com</a></p>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,444 @@
+/* ==================================================
+   CSS Selector Overview
+
+   :root   - Root element (<html>), often used for variables
+   *        - Selects every element
+   .class   - Selects elements with a class
+              Example: <div class="movie-card"> in HTML -> .movie-card in CSS
+
+   #id      - Selects an element with a specific id
+              Example: <section id="feedback"> in HTML -> #feedback in CSS
+
+   element  - Selects all elements of a given type
+              Examples: body, header, nav, section, table in HTML -> body, header, nav, section, table in CSS
+
+              
+================================================== */
+
+/* ==================================================
+   1. Root Variables
+   Reusable colors and layout values for the whole page.
+================================================== */
+:root {
+    --csuf-blue: #00274c;
+    --csuf-blue-light: #0a3d72;
+    --csuf-orange: #f58220;
+    --csuf-cream: #f9f6ef;
+    --text-dark: #1f2933;
+    --text-light: #ffffff;
+    --border: #d7dde5;
+    --card-bg: #fffdf8;
+}
+
+
+/* ==================================================
+   2. Global Reset and Base Styles
+   These styles affect the whole webpage.
+================================================== */
+
+/* The * selector targets every element. */
+* {
+    box-sizing: border-box;
+}
+
+/* Smoothly scrolls when clicking page links like #featured. */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Main page background, text color, and font. */
+body {
+    margin: 0;
+    color: var(--text-dark);
+    background: var(--csuf-cream);
+    font-family: "Trebuchet MS", sans-serif;
+}
+
+
+
+/* ==================================================
+   3. Reusable Layout Class
+================================================== */
+
+/* Centers content and limits how wide it can get. */
+.container {
+    width: 1200px;
+    margin-inline: auto;
+}
+
+
+/* ==================================================
+   4. Header
+================================================== */
+
+/* Styles the top banner area. */
+header {
+    background: linear-gradient(120deg, var(--csuf-blue) 10%, var(--csuf-blue-light) 90%);
+    color: var(--text-light);
+    padding: 2.5rem 0;
+}
+
+/* Styles the main page title inside the header. */
+header h1 {
+    margin: 0;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+}
+
+/* Styles the tagline below the title. */
+header p {
+    /* you can do something here */
+}
+
+
+/* ==================================================
+   5. Navigation
+================================================== */
+
+/* Styles the orange navigation bar. */
+nav {
+    background-color: var(--csuf-orange);
+}
+
+/* Removes bullets and places links in a row using Flexbox. */
+nav ul {
+    width: 1200px;
+    margin: 0;
+    margin-inline: auto;
+    padding: 0.5rem 1rem;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Styles each navigation link. */
+nav a {
+    display: inline-block;
+    padding: 0.7rem 0.2rem;
+    text-decoration: none;
+    font-weight: 700;
+    color: #1a2633;
+    border-bottom: 3px solid transparent;
+}
+
+/* Effect: changes link appearance when hovered or keyboard-focused. */
+nav a:hover,
+nav a:focus-visible {
+    color: var(--csuf-blue);
+    border-color: var(--csuf-blue);
+    outline: none;
+}
+
+
+/* ==================================================
+   6. Main Page Sections
+================================================== */
+
+/* Adds vertical spacing around main content. */
+main {
+    padding: 2.5rem 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Styles each content section like a card. */
+.section {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Styles section headings. */
+.section h2 {
+    margin-top: 0;
+    color: var(--csuf-blue);
+    border-left: 6px solid var(--csuf-orange);
+    padding-left: 0.7rem;
+}
+
+
+/* ==================================================
+   7. Movie Cards
+================================================== */
+
+/* Creates a responsive grid layout for movie cards. */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: 1.25rem;
+}
+
+/* Styles each movie card. */
+.movie-card {
+    background: var(--card-bg);
+    border: 1px solid #e7dacc;
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+/* Adds a small lift effect when hovering over a movie card. */
+.movie-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 39, 76, 0.15);
+}
+
+/* Removes extra default spacing from movie titles and paragraphs. */
+.movie-card h3,
+.movie-card p {
+    margin: 0;
+}
+
+/* Makes movie posters the same size and shape. */
+.movie-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #e1e5ea;
+}
+
+/* Creates a two-column layout for the dynamic movie details page. */
+.details-layout {
+    display: grid;
+    grid-template-columns: minmax(220px, 320px) 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+/* Keeps the movie details poster neatly framed. */
+.details-layout img {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #e1e5ea;
+}
+
+/* Styles each displayed review on the details page. */
+.review-card {
+    border-left: 4px solid var(--csuf-orange);
+    background: #f9fbfd;
+    padding: 0.85rem 1rem;
+    margin-bottom: 1rem;
+}
+
+.review-card h3,
+.review-card p {
+    margin: 0 0 0.45rem;
+}
+
+
+/* ==================================================
+   8. Buttons
+================================================== */
+
+/* Styles links and inputs that should look like buttons. */
+.btn {
+    display: inline-block;
+    align-self: center;
+    border: 0;
+    border-radius: 100px;
+    padding: 0.55rem 1rem;
+    text-decoration: none;
+    background-color: var(--csuf-blue);
+    color: var(--text-light);
+    cursor: pointer;
+}
+
+
+/* ==================================================
+   9. Feedback Form
+   The #feedback selector targets only the feedback section.
+================================================== */
+
+
+
+
+/* Styles labels inside form sections. */
+#feedback label,
+#leave-review label {
+    display: inline-block;
+    margin-bottom: 0.35rem;
+    font-weight: 700;
+}
+
+/* Styles text inputs, dropdowns, and textareas in the form. */
+#feedback input[type="text"],
+#feedback input[type="email"],
+#feedback select,
+#feedback textarea,
+#leave-review input[type="text"],
+#leave-review select,
+#leave-review textarea {
+    width: 100%;
+    border: 1px solid #bcc7d3;
+    border-radius: 8px;
+    padding: 0.65rem 0.75rem;
+    background-color: #f9fbfd;
+    color: #334a60;
+}
+
+/* Gives the textarea a larger height and vertical resizing. */
+#feedback textarea,
+#leave-review textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Makes disabled form controls look inactive. */
+#feedback input:disabled,
+#feedback select:disabled,
+#feedback textarea:disabled,
+#leave-review input:disabled,
+#leave-review select:disabled,
+#leave-review textarea:disabled,
+.btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Makes the feedback form button orange instead of blue. */
+#feedback input[type="submit"],
+#leave-review input[type="submit"] {
+    background-color: var(--csuf-orange);
+    color: #1f2125;
+    display: block;
+    margin-inline: auto;
+}
+
+/* Styles the message saying the review feature is not ready. */
+.status-banner {
+    margin-top: 20px;
+    background: #fff2e3;
+    color: #5f2d00;
+    border: 1px solid #f2cc9f;
+    border-radius: 8px;
+    padding: 0.7rem;
+}
+
+/* Hides JavaScript-powered messages until there is something to show. */
+.hidden {
+    display: none;
+}
+
+
+/* ==================================================
+   10. Movies Table
+================================================== */
+
+/* Styles the main movie table. */
+.movies-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* Styles the table header row. */
+.movies-table thead {
+    background: var(--csuf-blue);
+    color: var(--text-light);
+}
+
+/* Adds padding and borders to table cells. */
+.movies-table th,
+.movies-table td {
+    text-align: left;
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Adds alternating row color for readability. */
+.movies-table tbody tr:nth-child(even) {
+    background-color: #f7fafc;
+}
+
+
+/* ==================================================
+   11. Footer
+================================================== */
+
+/* Styles the footer at the bottom of the page. */
+footer {
+    background-color: var(--csuf-blue);
+    color: var(--text-light);
+    text-align: center;
+    padding: 1.5rem 1rem;
+}
+
+/* Removes large default paragraph spacing in the footer. */
+footer p {
+    margin: 0.3rem 0;
+}
+
+/* Styles links inside the footer. */
+footer a {
+    color: #ffd9b5;
+}
+
+/* Changes footer link color on hover or keyboard focus. */
+footer a:hover,
+footer a:focus-visible {
+    color: #ffffff;
+}
+
+
+
+/* DEMO: Uncomment to see effect */
+@media (max-width: 640px) {
+    .container {
+        width: 95%;
+    }
+
+    header {
+        padding: 2rem 0;
+    }
+
+    nav ul {
+        width: 100%;
+        justify-content: center;
+        gap: 0.25rem;
+        padding: 0.4rem 0.5rem;
+    }
+
+    nav a {
+        display: block;
+        text-align: center;
+        padding: 0.65rem 0.35rem;
+    }
+
+
+    .movie-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .movie-card img {
+        width: min(100%, 250px);
+        height: auto;
+        max-height: 420px;
+        align-self: center;
+    }
+
+    .details-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* TODO: Add responsive design for iPads */
+/* @media (max-width: 1024px) {
+
+} */

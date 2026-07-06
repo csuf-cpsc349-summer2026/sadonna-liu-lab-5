@@ -1,0 +1,78 @@
+<!-- doctype: Declares the document type as HTML5 to ensure correct rendering in modern web browsers -->
+<!DOCTYPE html>
+<!-- html: The root container holding all of the document's elements and metadata -->
+<html lang="en">
+
+<!-- head: Holds machine-readable information (metadata) about the document, such as character sets and viewport definitions -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPSC-349 Lab 5: Contact Us</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<!-- body: Encloses all the visible, renderable content of the web page shown to the user -->
+
+<body>
+
+
+
+
+    <!-- main: Encloses the unique, central content of the document that is not repeated across other pages -->
+    <main class="container">
+
+        <!-- section: Groups related content together into distinct thematic regions of a page -->
+        <section id="feedback" class="section">
+            <h2>Feedback and Suggestions</h2>
+            <p><strong>Status:</strong> This form now uses JavaScript to read and display user input.</p>
+
+            <!-- form: Wraps interactive controls to capture and submit user input -->
+            <form id="feedback-form" action="#" method="post">
+                <!-- label: Provides a text label linked directly to a form control for accessibility -->
+                <label for="name">Name:</label>
+                <br>
+                <!-- input: Creates basic interactive fields to capture user text or button clicks -->
+                <input id="name" type="text" placeholder="Enter your name">
+                <br><br>
+
+                <label for="email">Email:</label>
+                <br>
+                <input id="email" type="email" placeholder="Enter your email">
+                <br><br>
+
+                <label for="topic">Topic:</label>
+                <br>
+                <!-- select: Creates a drop-down menu for selecting from multiple options -->
+                <select id="topic">
+                    <option value="suggestion">Movie suggestion</option>
+                    <option value="feedback">Website feedback</option>
+                    <option value="issue">Report an issue</option>
+                    <option value="other">Other</option>
+                </select>
+                <br><br>
+
+                <label for="message">Message:</label>
+                <br>
+                <!-- textarea: Provides a multi-line text input control suitable for longer text entries -->
+                <textarea id="message" rows="5" cols="40" placeholder="Share your feedback or suggestion"></textarea>
+                <br><br>
+
+                <input class="btn" type="submit" value="Send Message">
+            </form>
+
+            <div id="feedback-output" class="status-banner hidden" aria-live="polite">
+                <strong id="feedback-heading"></strong>
+                <p id="feedback-reply">
+                    We received your <span id="feedback-topic"></span> message and can reply to
+                    <strong id="feedback-email"></strong>.
+                </p>
+                <p><em id="feedback-message"></em></p>
+            </div>
+        </section>
+
+    </main>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
