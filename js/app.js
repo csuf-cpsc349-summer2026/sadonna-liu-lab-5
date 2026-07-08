@@ -76,8 +76,10 @@ function renderDetailsPage() {
     document.querySelector("#movie-rating").textContent = movie.rating;
 
     // call a function for renderReviews(movie.reviews);
+    renderReviews(movie.reviews);
     // call another function for setupReviewForm(movie.reviews);
-}
+    setupReviewForm(movie.reviews);
+}    
 
 function renderReviews(reviews) {
     /*
@@ -87,21 +89,76 @@ function renderReviews(reviews) {
     If there are reviews, it creates a card for each review with the reviewer's name, rating, and review text, and appends these cards to the reviews list.
     */
     const reviewsList = document.querySelector("#reviews-list");
+    if (!reviewsList) {
+        return;
+    }
+
     reviewsList.replaceChildren();
 
     if (reviews.length === 0) {
         // display a message if there are no reviews to show. We create a paragraph element, set its text content to indicate that there are no reviews, and append it to the reviews list.
+        const emptyMessage = document.createElement("p");
+        emptyMessage.textContent = "No reviews have been added yet.";
+        reviewsList.append(emptyMessage);
+        return;
     }
 
     reviews.forEach((review) => {
-        //create a card for each review.
+        const reviewCard = document.createElement("div");
+        reviewCard.classList.add("review-card");
+
+        const reviewerName = document.createElement("h3");
+        reviewerName.textContent = review.name;
+
+        const reviewerRating = document.createElement("p");
+        reviewerRating.textContent = `Rating: ${review.rating}/5`;
+
+        const reviewerText = document.createElement("p");
+        reviewerText.textContent = review.text;
+
+        reviewCard.append(reviewerName, reviewerRating, reviewerText);
+        reviewsList.append(reviewCard);
     });
 }
 
 function setupReviewForm(reviews) {
-    // TODO: This function sets up the event listener for the review submission form. 
-    // When a new review is submitted, it pushes a new review object to the reviews array and calls the renderReviews function to update the reviews section with the new review.
+    const reviewForm = document.querySelector("#review-form");
+
+    if (!reviewForm) {
+        return;
+    }
+
+    reviewForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const name = document.querySelector("#reviewer-name").value.trim();
+        const rating = document.querySelector("#review-rating").value;
+        const text = document.querySelector("#review-text").value.trim();
+        const heading = document.querySelector("#review-heading");
+        const reply = document.querySelector("#review-reply");
+        const output = document.querySelector("#review-output");
+        const reviewerNameOutput = document.querySelector("#review-output-name");
+        const reviewerTextOutput = document.querySelector("#review-output-text");
+
+        if (!name || !rating || !text) {
+            heading.textContent = "Please complete your name, rating, and review before submitting.";
+            reply.classList.add("hidden");
+            reviewerTextOutput.textContent = "";
+            output.classList.remove("hidden");
+            return;
+        }
+
+        reviews.push({ name, rating, text });
+
+        renderReviews(reviews);
+        heading.textContent = "Thank you for your review!";
+        reviewerNameOutput.textContent = name;
+        reply.classList.remove("hidden");
+        output.classList.remove("hidden");
+        reviewForm.reset();
+    });
 }
+
 
 function setupFeedbackForm() {
     // Select the feedback form element from the Document Object Model (DOM). We have to make sure this exists.
